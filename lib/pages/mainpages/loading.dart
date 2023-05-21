@@ -1,19 +1,19 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
-//
-// class Loading extends StatelessWidget {
-//   const Loading({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       color: const Color.fromRGBO(126,143,250,10),
-//       child: const Center(
-//         child: SpinKitSpinningLines(
-//           color: Colors.indigoAccent,
-//           size: 70.0,
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+class Loading extends StatelessWidget {
+  const Loading({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color.fromRGBO(126,143,250,10),
+      child: const Center(
+        child: SpinKitSpinningLines(
+          color: Colors.indigoAccent,
+          size: 70.0,
+        ),
+      ),
+    );
+  }
+}

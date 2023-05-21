@@ -13,6 +13,8 @@ late String kitfo;
 late String dorowot;
 late String gomen;
 
+bool isLoading=true;
+
 final storage =FirebaseStorage.instance;
 @override
 void initState(){
@@ -36,6 +38,8 @@ setState((){
 kitfo=urlkitfo;
 dorowot=urldoro;
 gomen=urlgomen;
+
+isLoading=false;
 });
 
 }
@@ -80,7 +84,9 @@ gomen=urlgomen;
 //______________________________________________________________________________
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
-                        child: Row(
+                        child: isLoading
+                            ? CircularProgressIndicator()
+                            : Row(
                           children: [
 //፟________________________________________one image from fire base Gomen___________________________
                             Card(

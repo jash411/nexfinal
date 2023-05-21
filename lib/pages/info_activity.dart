@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nexfinal/pages/current_and_goalweight_info.dart';
 
 class activityinfo extends StatefulWidget {
   const activityinfo({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class activityinfo extends StatefulWidget {
 }
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
+double Activity=0;
 
 class _activityinfoState extends State<activityinfo> {
   @override
@@ -49,8 +50,8 @@ body: SingleChildScrollView(
         ElevatedButton(onPressed: ()async {
           final data = {'activity': 'Lightly active'};
           await collectionReference.add(data);
-          Navigator.pushNamed(context, '/current_and_goalweight_info.dart');
-          print('lightly activity pressed');
+          Navigator.pushNamed(context, '/dietinginfo.dart');
+          print('${(bmrvalue * 1.375).toStringAsFixed(2)}lightly activity pressed');
 
 
         },
@@ -74,7 +75,7 @@ body: SingleChildScrollView(
         ElevatedButton(onPressed: () async {
           final data = {'activity': 'Moderately active'};
         await collectionReference.add(data);
-        Navigator.pushNamed(context, '/current_and_goalweight_info.dart');
+          Navigator.pushNamed(context, '/dietinginfo.dart');
         },
           child: Text('Moderately Active',
             style: TextStyle(fontSize: 14,
@@ -95,7 +96,7 @@ body: SingleChildScrollView(
         ElevatedButton(onPressed: () async {
           final data = {'activity': 'active'};
           await collectionReference.add(data);
-          Navigator.pushNamed(context, '/current_and_goalweight_info.dart');
+          Navigator.pushNamed(context, '/dietinginfo.dart');
         },
           child: Text(' Active',
             style: TextStyle(fontSize: 14,
@@ -116,7 +117,7 @@ body: SingleChildScrollView(
         ElevatedButton(onPressed: () async {
           final data = {'activity': 'Very active'};
           await collectionReference.add(data);
-          Navigator.pushNamed(context, '/current_and_goalweight_info.dart');
+          Navigator.pushNamed(context, '/dietinginfo.dart');
         },
           child: Text('Very Active',
             style: TextStyle(fontSize: 14,

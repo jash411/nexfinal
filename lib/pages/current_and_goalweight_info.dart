@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nexfinal/pages/dietinginfo.dart';
+import 'package:nexfinal/pages/info_activity.dart';
 import 'package:nexfinal/pages/info_n_s_age.dart';
 import 'package:nexfinal/pages/mainpages/profile.dart';
 
@@ -231,7 +232,7 @@ class _weightinfoState extends State<weightinfo> {
                       print(bmrvalue);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => dietinginfo()),
+                        MaterialPageRoute(builder: (context) => activityinfo()),
                       );
 
                       await users.add({

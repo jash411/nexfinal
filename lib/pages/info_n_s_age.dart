@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:nexfinal/pages/current_and_goalweight_info.dart';
 import 'package:nexfinal/pages/info_activity.dart';
 
 
@@ -164,7 +165,7 @@ class _info1State extends State<info1> {
                         if (_formKey1.currentState!.validate()) {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => activityinfo()),
+                              MaterialPageRoute(builder: (context) => weightinfo()),
                             );
 
                             await users.add({
