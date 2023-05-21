@@ -37,7 +37,7 @@ class _dietinginfoState extends State<dietinginfo> {
                 SizedBox(height: 40.0),
                 ElevatedButton(onPressed: (){
                   Navigator.pushNamed(context, '/wellcomepage.dart');
-                  print('login pressed');
+                  print('Classic choosed');
                 },
                   child: Text('Classic(no dietry preferences)',
                     style: TextStyle(fontSize: 14,
@@ -55,7 +55,7 @@ class _dietinginfoState extends State<dietinginfo> {
                 SizedBox(height: 30.0),
                 ElevatedButton(onPressed: (){
                   Navigator.pushNamed(context, '/wellcomepage.dart');
-                  print('login pressed');
+                  print('vegetarian choosed');
                 },
                   child: Text('Vegetarian(i dont eat meat)',
                     style: TextStyle(fontSize: 14,
@@ -73,7 +73,7 @@ class _dietinginfoState extends State<dietinginfo> {
                 SizedBox(height: 30.0),
                 ElevatedButton(onPressed: (){
                   Navigator.pushNamed(context, '/wellcomepage.dart');
-                  print('login pressed');
+                  print('vegan choosed');
                 },
                   child: Text("vegan(i donn't eat any animal product)",
                     style: TextStyle(fontSize: 14,

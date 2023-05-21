@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:nexfinal/pages/mainpages/profile.dart';
 import 'package:nexfinal/pages/mainpages/recipe.dart';
 
-import 'feedback.dart';
-import 'home.dart';
+
+import 'mainpages/feedback.dart';
+import 'mainpages/home.dart';
 
 
 class mainpages extends StatefulWidget {
+
   const mainpages({Key? key}) : super(key: key);
 
   @override
@@ -14,6 +16,7 @@ class mainpages extends StatefulWidget {
 }
 
 class _mainpagesState extends State<mainpages> {
+
 List pages=[
   HomeScreen(),
   recipe(),

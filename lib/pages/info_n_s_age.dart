@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:nexfinal/pages/info_activity.dart';
 
 
-import 'dietinginfo.dart';
 
 FirebaseFirestore firestore=FirebaseFirestore.instance;
 class info1 extends StatefulWidget {
@@ -12,7 +11,7 @@ class info1 extends StatefulWidget {
   @override
   State<info1> createState() => _info1State();
 }
-final _formKey = GlobalKey<FormState>();
+final _formKey1 = GlobalKey<FormState>();
 final fullnameController = TextEditingController();
 final ageController = TextEditingController();
 final heightController = TextEditingController();
@@ -20,8 +19,10 @@ final heightController = TextEditingController();
 // final currentweightController = TextEditingController();
 // final goalweightController = TextEditingController();
 // final dietingController = TextEditingController();
+var bmr;
+
 class _info1State extends State<info1> {
-  var gender;
+
   @override
   Widget build(BuildContext context) {
   CollectionReference users=FirebaseFirestore.instance.collection("users");
@@ -43,7 +44,7 @@ class _info1State extends State<info1> {
               ),),
 
               Form(
-                key: _formKey,
+                key: _formKey1,
                 child: Column(
                   children: [
                     TextFormField(style: TextStyle(fontSize: 16,
@@ -114,7 +115,7 @@ class _info1State extends State<info1> {
 
 
                     SizedBox(height: 40.0),
-                    Text('your height will help us to calculate your BMI.',
+                    Text('your height will help us to calculate your BMI.\n The standard was in(cm)',
                       style: TextStyle(
                         color: Colors.amberAccent,
                         fontSize: 15.0,
@@ -153,79 +154,34 @@ class _info1State extends State<info1> {
                       },
                     ),
                     SizedBox(height: 25),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text('Gender',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.normal,
-                        ),),
-                    ),
 
 
                     SizedBox(height: 7.0),
 
 
-                    Row(
-                      children: [
-                        Theme(
-                          data: Theme.of(context).copyWith(unselectedWidgetColor: Colors.white),
-                          child: Radio(
-                            value: 'Male',
-                            groupValue: gender,
-                            onChanged: (dynamic value) {
-                              setState(() {
-                                gender = value;
-                                print("$gender Selected");
-                              });
-                            },
-                          ),
-                        ),
-                        Text('Male', style: TextStyle(fontSize: 16, color: Colors.white)),
-                        Theme(
-                          data: Theme.of(context).copyWith(unselectedWidgetColor: Colors.white),
-                          child: Radio(
-                            value: 'Female',
-                            groupValue: gender,
-                            onChanged: (dynamic value) {
-                              setState(() {
-                                gender = value;
-                                print("$gender Selected");
-                              });
-                            },
-                          ),
-                        ),
-                        Text('Female', style: TextStyle(fontSize: 16, color: Colors.white)),
-                      ],
-                    ),
-                    Text(
-                      gender == null ? 'Please select a gender' : '',
-                      style: TextStyle(color: Colors.red),
-                    ),
-
-
                     ElevatedButton(
                       onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => activityinfo()),
-                          );
+                        if (_formKey1.currentState!.validate()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => activityinfo()),
+                            );
+
                             await users.add({
+
+                              'height': heightController.text,
                               'fullname': fullnameController.text,
                               'age': ageController.text,
-                              'height': heightController.text,
-                              // 'activity': 'active',
-                              // 'currentweight': '70',
-                              // 'goalweight': '85',
-                              // 'dieting': 'vegan'
-                            }).then((value) => print('user added'));
+
+
+                            }).then((value) => print('user name, age and height  added'));
                           }
 
                       },
                       child: Text('Submit'),
                     ),
+
+
 
 
                   ],

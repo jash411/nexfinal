@@ -11,6 +11,7 @@ class activityinfo extends StatefulWidget {
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+
 class _activityinfoState extends State<activityinfo> {
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,9 @@ body: SingleChildScrollView(
           final data = {'activity': 'Lightly active'};
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/current_and_goalweight_info.dart');
-          print('login pressed');
+          print('lightly activity pressed');
+
+
         },
           child: Text('Lightly Active',
             style: TextStyle(fontSize: 14,

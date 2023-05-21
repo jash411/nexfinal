@@ -1,5 +1,8 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nexfinal/pages/mainpages.dart';
+import 'package:nexfinal/pages/mainpages/home.dart';
 
 
 void main() async {
@@ -88,7 +91,7 @@ SizedBox(height: 15),
 
                     ElevatedButton(onPressed: (){
                       Navigator.pushNamed(context, '/info_n_s_age.dart');
-                      print('signup pressed');
+                      print('Get start pressed');
                     },
                         child: Text('Get started'),
                    style: ElevatedButton.styleFrom(
@@ -101,10 +104,53 @@ SizedBox(height: 15),
                    ),
                     ),
 
+
+
+
                   ],
                 ),
-              )
+              ),
+            Row(
+              children: [
+                ElevatedButton(onPressed: (){
+                  FirebaseAuth.instance.signOut();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => startpage()),
+                  );
+                },
+                  child: Text('logout'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    elevation: 0,
+                    // fixedSize:,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
 
+
+                ElevatedButton(onPressed: (){
+
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => mainpages()),
+                        (Route<dynamic> route) => false,
+                  );
+                },
+                  child: Text('Home'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    elevation: 0,
+                    // fixedSize:,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ]
         ),
       ),

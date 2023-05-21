@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nexfinal/nutrientlist.dart';
 import 'package:nexfinal/pages/start.dart';
 
 import '../../breakfast.dart';
@@ -18,63 +19,72 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Future<bool> _onBackPressed() async {
+    // Do something here.
+    return true;
+  }
+
   @override
 
   Widget build(BuildContext context) {
+
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: Scaffold(
-        backgroundColor: Colors.grey[900],
-        appBar: AppBar(
-          title: Text('Nutrition Expert'),
+      home: WillPopScope(
+        onWillPop: _onBackPressed,
+        child: Scaffold(
           backgroundColor: Colors.grey[900],
-          centerTitle: true,
-          actions: [
-            PopupMenuButton<_Menuvalues>(itemBuilder: (BuildContext context)=>[
-              PopupMenuItem(child:Row(
-                children: [
-                  Icon(Icons.share,color: Colors.blue),
-                  Text('share')
-                ],
-              ),value:_Menuvalues.share),
-              PopupMenuItem(child:Row(
-                children: [
-                  Icon(Icons.logout,color: Colors.blue),
-                  Text('  Log out')
-                ],
-              ),value: _Menuvalues.logout),
-            ],
-                onSelected: (value){
-                  switch (value){
-                    case _Menuvalues.share:
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Filter(),
-                    ),
-                    );
-                      break;
-                    case _Menuvalues.logout:
-                      FirebaseAuth.instance.signOut();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => info1()),
-                      );
-                      break;
-
-
-
-                  }
-                }
-            )
-          ],
-        ),
-
-
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children:<Widget> [
-                Buttons(),
+          appBar: AppBar(
+            title: Text('Nutrition Expert'),
+            backgroundColor: Colors.grey[900],
+            centerTitle: true,
+            actions: [
+              PopupMenuButton<_Menuvalues>(itemBuilder: (BuildContext context)=>[
+                PopupMenuItem(child:Row(
+                  children: [
+                    Icon(Icons.share,color: Colors.blue),
+                    Text('share')
+                  ],
+                ),value:_Menuvalues.share),
+                PopupMenuItem(child:Row(
+                  children: [
+                    Icon(Icons.logout,color: Colors.blue),
+                    Text('  Log out')
+                  ],
+                ),value: _Menuvalues.logout),
               ],
+                  onSelected: (value){
+                    switch (value){
+                      case _Menuvalues.share:
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>nutrientlist(),
+                      ),
+                      );
+                        break;
+                      case _Menuvalues.logout:
+                        FirebaseAuth.instance.signOut();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => startpage()),
+                        );
+                        break;
+
+
+
+                    }
+                  }
+              )
+            ],
+          ),
+
+
+          body: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children:<Widget> [
+                  Buttons(),
+                ],
+              ),
             ),
           ),
         ),
@@ -152,7 +162,7 @@ class Buttons extends StatelessWidget {
 
               ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Filter()),
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>DemoMWTabBarScreen1()),
                   );
                 },
                 icon: Icon(Icons.add_box_outlined),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nexfinal/pages/current_and_goalweight_info.dart';
+import 'package:nexfinal/pages/info_n_s_age.dart';
+import 'package:nexfinal/pages/mainpages.dart';
 
+bool loged=false;
 class wellcomepage extends StatefulWidget {
   const wellcomepage({Key? key}) : super(key: key);
 
@@ -43,8 +47,13 @@ class _wellcomepageState extends State<wellcomepage> {
 
 SizedBox(height: 40.0),
                   ElevatedButton(onPressed: (){
-                    Navigator.pushNamed(context, '/mainpages.dart');
-                    print('login pressed');
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => mainpages()),
+                          (route) => false, // Remove all existing routes
+                    );
+                    loged=true;
+                    print('gotit pressed');
                   },
                     child: Text('GOT IT!',
                       style: TextStyle(fontSize: 14,
@@ -61,6 +70,7 @@ SizedBox(height: 40.0),
                   ),
 
                   SizedBox(height: 30.0),
+
 
 
 
