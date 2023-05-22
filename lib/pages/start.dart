@@ -69,7 +69,7 @@ SizedBox(height: 15),
 
                 child: Row(
                 // crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: ()  {
@@ -78,31 +78,32 @@ SizedBox(height: 15),
 
                     },
                         child: Text('Login'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        elevation: 0,
-
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blueGrey,
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          minimumSize: Size(160, 50),
                         ),
                       ),
 
-                    ),
 
-                    ElevatedButton(onPressed: (){
-                      Navigator.pushNamed(context, '/info_n_s_age.dart');
-                      print('Get start pressed');
-                    },
-                        child: Text('Get started'),
-                   style: ElevatedButton.styleFrom(
-                     backgroundColor: Colors.blueAccent,
-                     elevation: 0,
-                     // fixedSize:,
-                     shape: RoundedRectangleBorder(
-                       borderRadius: BorderRadius.circular(30),
-                     ),
-                   ),
-                    ),
+
+                   //  ElevatedButton(onPressed: (){
+                   //    Navigator.pushNamed(context, '/info_n_s_age.dart');
+                   //    print('Get start pressed');
+                   //  },
+                   //      child: Text('Get started'),
+                   //    style: ElevatedButton.styleFrom(
+                   //      backgroundColor: Colors.blueGrey,
+                   //      elevation: 5,
+                   //   shape: RoundedRectangleBorder(
+                   //     borderRadius: BorderRadius.circular(30),
+                   //   ),
+                   //      minimumSize: Size(200, 50),
+                   // ),
+                   //  ),
 
 
 
@@ -110,52 +111,14 @@ SizedBox(height: 15),
                   ],
                 ),
               ),
-            Row(
-              children: [
-                ElevatedButton(onPressed: (){
-                  FirebaseAuth.instance.signOut();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => startpage()),
-                  );
-                },
-                  child: Text('logout'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    elevation: 0,
-                    // fixedSize:,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
 
-
-                ElevatedButton(onPressed: (){
-
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => mainpages()),
-                        (Route<dynamic> route) => false,
-                  );
-                },
-                  child: Text('Home'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    elevation: 0,
-                    // fixedSize:,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
               ],
             ),
-          ]
+
         ),
       ),
       ),
-      ),
+
     );
   }
 }

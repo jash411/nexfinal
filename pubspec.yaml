@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.1.1
   nb_utils: ^5.0.8
   flutter_spinkit: ^5.2.0
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:

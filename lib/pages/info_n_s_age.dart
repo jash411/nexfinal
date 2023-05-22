@@ -180,6 +180,14 @@ class _info1State extends State<info1> {
 
                       },
                       child: Text('Submit'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueGrey,
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        minimumSize: Size(160, 50),
+                      ),
                     ),
 
 

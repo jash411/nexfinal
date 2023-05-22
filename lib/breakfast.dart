@@ -31,8 +31,8 @@ class foodlist extends State<DemoMWTabBarScreen1> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blueGrey,
-            iconTheme: IconThemeData(color: Colors.white),
+            backgroundColor: Colors.grey[900],
+            iconTheme: IconThemeData(color: Colors.blueGrey),
             title: Text(
               'Recipes',
               style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold),
@@ -42,7 +42,7 @@ class foodlist extends State<DemoMWTabBarScreen1> {
                 print(index);
               },
               indicatorColor: Colors.blue,
-              labelColor: Colors.white,
+              labelColor: Colors.grey,
               labelStyle: boldTextStyle,
 
               tabs: [

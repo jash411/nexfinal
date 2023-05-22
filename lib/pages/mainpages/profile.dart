@@ -5,6 +5,7 @@ import 'package:nexfinal/pages/current_and_goalweight_info.dart';
 import 'package:nexfinal/pages/info_activity.dart';
 import 'package:nexfinal/pages/info_n_s_age.dart';
 import 'package:nexfinal/pages/mainpages/setting.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class profile extends StatefulWidget {
 
@@ -71,7 +72,7 @@ class _profileState extends State<profile> {
                      Column(
                         children: [
                           Text('signed in as  ',style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.lightBlueAccent,
                             fontSize: 15,
                           ),
                           ),
@@ -91,14 +92,21 @@ class _profileState extends State<profile> {
 
               ],
         ),
+            Divider(
+              height: 20,
+              thickness: 5,
+              color: Colors.yellow,
+              indent: 20,
+              endIndent: 20,
+            ),
 
-            SizedBox(height: 50),
+            // SizedBox(height: 50),
               Row(
                 children: [
                   SizedBox(width: 28),
                   SizedBox(height: 50),
                   Text('Details', style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.lightBlueAccent,
                    fontSize: 20,
              ),
                     ),
@@ -106,19 +114,20 @@ class _profileState extends State<profile> {
               ),
 
             Container(
-              padding: EdgeInsets.all(100).copyWith(top: 0,left: 10),
+              padding: EdgeInsets.all(30).copyWith(top: 0,left: 10),
               margin: EdgeInsets.only(left: 30, right: 25),
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(.2),
-                borderRadius: BorderRadius.circular(20).copyWith(topLeft: Radius.circular(0)),
+                borderRadius: BorderRadius.circular(35).copyWith(topLeft: Radius.circular(0)),
               ),
 
               child: Column(
                 children: <Widget>[
+                  SizedBox(height: 15),
                   Row(
                     children: [
                       Text('Name: ', style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                         fontSize: 18,
                       ),
                       ),
@@ -126,13 +135,13 @@ class _profileState extends State<profile> {
                         color: Colors.white,
                         fontSize: 18),
                       )
-
                               ],
                   ),
+                  SizedBox(height: 13),
                   Row(
                     children: [
                       Text('Age: ', style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                         fontSize: 18,
                       ),
                       ),
@@ -142,11 +151,11 @@ class _profileState extends State<profile> {
                       )
                     ],
                   ),
-
+                  SizedBox(height: 13),
                   Row(
                     children: [
                       Text('Height: ', style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                         fontSize: 18,
                       ),
                       ),
@@ -161,71 +170,114 @@ class _profileState extends State<profile> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 13,),
+                  Row(
+                    children: [
+                      Text('Goal weight: ', style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 18,
+                      ),
+                      ),
+                      Text(goalweightController.text,style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18),
+                      ),
+                      Text('Kg', style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                      ),
+                    ],
+                  ),
 
-                  // Divider(
-                  //   thickness: 4,
-                  //   height: 30,
-                  //   indent: 0,
-                  //   endIndent:0 ,
-                  // ),
+
                 ],
               ),
 
             ),
+            SizedBox(height: 15),
+            Divider(
+              height: 20,
+              thickness: 5,
+              color: Colors.blueGrey,
+              indent: 20,
+              endIndent: 20,
+            ),
+
             Row(
               children: [
                 SizedBox(width: 28),
                 SizedBox(height: 50),
                 Text('Calories', style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.blue,
                   fontSize: 20,
                 ),
                 ),
               ],
             ),
-
-            Container(
-              padding: EdgeInsets.all(100).copyWith(top: 0,left: 10),
-              margin: EdgeInsets.only(left: 30, right: 25),
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.2),
-                borderRadius: BorderRadius.circular(20).copyWith(topLeft: Radius.circular(0)),
-              ),
-
-              child: Column(
+          Column(
                 children: <Widget>[
-                  Row(
-                    children: [
-                      Text('BMR : ', style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                      ),
-                      Text('$bmrvalue cal', style: TextStyle(fontSize: 16, color: Colors.white)),
 
+                  Column(
+                    children:<Widget> [
+                      LinearPercentIndicator(
+                        lineHeight: 30,
+                        width: 350,
+                        animation: true,
+                        animationDuration: 2000,
+                        progressColor: Colors.blueGrey,
+                        backgroundColor: Colors.red[200],
+                        percent: .5,
+                        center: Text('${bmrvalue.toStringAsFixed(0)} cal', style: TextStyle(fontSize: 16, color: Colors.white)),
+                      ),
+                      Text('Basal metabolic rate', style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                      ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Text('TEF: ', style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                      ),
-                      Text('${(bmrvalue * 0.1).toStringAsFixed(2)}', style: TextStyle(fontSize: 16, color: Colors.white)),
 
+
+                  Column(
+                    children:<Widget> [
+                      LinearPercentIndicator(
+                        lineHeight: 30,
+                        animation: true,
+                        animationDuration: 2000,
+                        width: 350,
+                        progressColor: Colors.deepPurpleAccent,
+                        backgroundColor: Colors.red[200],
+                        percent: .3,
+                        center:    Text('${tefvalue.toStringAsFixed(0)} cal', style: TextStyle(fontSize: 16, color: Colors.white)),
+
+                      ),
+                      Text('Thermic Effect of food', style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                      ),
                     ],
                   ),
 
-                  Row(
-                    children: [
-                      Text('EEoA: ', style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                      ),
-                      Text('$Activity cal', style: TextStyle(fontSize: 16, color: Colors.white)),
+                  Column(
+                    children:<Widget> [
+                      LinearPercentIndicator(
+                        lineHeight: 30,
+                        width: 350,
+                        animation: true,
+                        animationDuration: 2000,
+                        progressColor: Colors.green,
+                        backgroundColor: Colors.red[200],
+                        percent: .8,
+                        center:Text('${Activity.toStringAsFixed(0)} cal', style: TextStyle(fontSize: 16, color: Colors.white)),
 
+                      ),
+                      Text('Energy Expenditure of Activity', style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                      ),
                     ],
                   ),
 
@@ -233,7 +285,7 @@ class _profileState extends State<profile> {
                 ],
               ),
 
-            ),
+
 
 
               ],

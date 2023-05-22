@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nexfinal/nutrientlist.dart';
+import 'package:nexfinal/pages/current_and_goalweight_info.dart';
+import 'package:nexfinal/pages/info_activity.dart';
 import 'package:nexfinal/pages/start.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../breakfast.dart';
 import '../../nutrients.dart';
@@ -19,11 +22,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<bool> _onBackPressed() async {
-    // Do something here.
+  DateTime? currentBackPressTime;
+
+  Future<bool> _onBackPressed(BuildContext context) async {
+    if (currentBackPressTime == null ||
+        DateTime.now().difference(currentBackPressTime!) > Duration(seconds: 2)) {
+      // Show a toast or snackbar indicating to press again to exit
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Press back again to exit')),
+      );
+
+      currentBackPressTime = DateTime.now();
+      return false;
+    }
+
     return true;
   }
-
   @override
 
   Widget build(BuildContext context) {
@@ -32,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       debugShowCheckedModeBanner: false,
 
       home: WillPopScope(
-        onWillPop: _onBackPressed,
+        onWillPop: () => _onBackPressed(context),
         child: Scaffold(
           backgroundColor: Colors.grey[900],
           appBar: AppBar(
@@ -118,24 +132,41 @@ class Buttons extends StatelessWidget {
 
           SizedBox(height: 15),
           //summarty container will start from this
-          Container(
-            height: 170,
-            width: 370,
-            // padding: EdgeInsets.symmetric(vertical: 30,horizontal: 70),
-            color: Colors.blueGrey,
 
-            child:Align(
-              alignment: Alignment(-.6, .7),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('Eaten'),
-                  Text('Remaining'),
-                  Text('Losed')
-                ],
-              ),
+            Column(
+              children: [
+                CircularPercentIndicator(
+                  animation: true,
+                  animationDuration: 3000,
+                  radius: 65,
+                  lineWidth: 11,
+                  percent: 0.5,
+                  backgroundColor: Colors.deepPurpleAccent,
+                  circularStrokeCap: CircularStrokeCap.round,
+                  center: Column(
+                    children: [
+                      SizedBox(height: 40),
+                      Text('${Energy.toStringAsFixed(0)} ',
+                          style: const TextStyle(
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white)),
+                      Text('Calories', style:TextStyle(
+                          fontSize: 17,
+                        color: Colors.white
+                      ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 15),
+                Text('Remaining', style:TextStyle(
+                    fontSize: 17,
+                    color: Colors.white
+                ),)
+              ],
             ),
-          ),
+
 
 //summary container will End in this
 

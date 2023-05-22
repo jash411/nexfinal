@@ -9,8 +9,21 @@ class recipe extends StatefulWidget {
 }
 
 class _recipeState extends State<recipe> {
-late String kitfo;
+//cultural
+  late String kitfo;
+  late String Genfo;
+//Animals
 late String dorowot;
+late String bifetibs;
+late String ayb;
+  late String shekilatibs;
+  late String egg;
+  //breads
+  late String anbasha;
+  late String injera;
+//sauce
+  late String kik;
+  late String tikilgomen;
 late String gomen;
 
 bool isLoading=true;
@@ -19,23 +32,60 @@ final storage =FirebaseStorage.instance;
 @override
 void initState(){
   kitfo="";
+  Genfo="";
   dorowot="";
+  bifetibs="";
+  ayb="";
+  shekilatibs="";
+  egg="";
+  anbasha="";
+  injera="";
+  kik="";
+  tikilgomen="";
   gomen="";
+
 
   getimgurl();
 }
 
 Future<void> getimgurl() async {
 final refkitfo=storage.ref().child('kitfo.jpg');
+final refGenfo=storage.ref().child('genfo.jpg');
+final refbifetibs=storage.ref().child('4beeftibs.jpg');
 final refdoro=storage.ref().child('2.dorowot.jpg');
+final refayb=storage.ref().child('ayb.jpg');
+final refShekilatibs=storage.ref().child('sheklatibs.jpg');
+final refegg=storage.ref().child('eggfrfr.jpg');
+final refanbasha=storage.ref().child('anbasha.jpg');
+final refinjera=storage.ref().child('injera.jpg');
+final refkik=storage.ref().child('kikalicha.jpg');
+final reftikilgomen=storage.ref().child('tikilgomen.jpg');
 final refgomen=storage.ref().child('3gomen.jpg');
 
 final urlkitfo= await refkitfo.getDownloadURL();
+final urlGenfo= await refGenfo.getDownloadURL();
+final urlbifetibs= await refbifetibs.getDownloadURL();
+final urlayb= await refayb.getDownloadURL();
+final urlshekilatibs= await refShekilatibs.getDownloadURL();
+final urlegg= await refegg.getDownloadURL();
+final urlanbasha= await refanbasha.getDownloadURL();
+final urlinjera= await refinjera.getDownloadURL();
+final urlkik= await refkik.getDownloadURL();
+final urltikilgomen= await reftikilgomen.getDownloadURL();
 final urldoro= await refdoro.getDownloadURL();
 final urlgomen= await refgomen.getDownloadURL();
 
 setState((){
 kitfo=urlkitfo;
+Genfo=urlGenfo;
+bifetibs=urlbifetibs;
+ayb=urlayb;
+shekilatibs=urlshekilatibs;
+egg=urlegg;
+anbasha=urlanbasha;
+injera=urlinjera;
+kik=urlkik;
+tikilgomen=urltikilgomen;
 dorowot=urldoro;
 gomen=urlgomen;
 
@@ -69,7 +119,7 @@ isLoading=false;
                         children: [
                           Align(
                             alignment: Alignment(-.9,0),
-                            child: Text('Recomended',
+                            child: Text('Meat',
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
@@ -104,7 +154,7 @@ isLoading=false;
                                   children: [
 
                                     Image(
-                                      image: NetworkImage(gomen,scale: 1.0),
+                                      image: NetworkImage(bifetibs,scale: 1.0),
                                       height: 125,
                                       width: 200,
                                       fit: BoxFit.cover,
@@ -112,7 +162,7 @@ isLoading=false;
                                        Align(
                                            alignment: Alignment.topLeft,
                                            child: Text(
-                                            'Gomen(ጎመን)',
+                                            'Bifetibs(ብፌ ጥብስ)',
                                             style: TextStyle(
                                               fontSize: 19,
                                               fontWeight: FontWeight.bold,
@@ -126,7 +176,7 @@ isLoading=false;
                                           fontSize: 15,
                                         ),),
                                         SizedBox(width: 22),
-                                        Text('216cal', style: TextStyle(
+                                        Text('154cal', style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold,
                                         ),),
@@ -144,6 +194,7 @@ isLoading=false;
                                       ],
                                     ),
                                   ],
+
                                 ),
 
                               ),
@@ -168,7 +219,7 @@ isLoading=false;
                                   children: [
 
                                     Image(
-                                      image: NetworkImage(dorowot,scale: 1.0),
+                                      image: NetworkImage(shekilatibs,scale: 1.0),
                                       height: 125,
                                       width: 200,
                                       fit: BoxFit.cover,
@@ -176,7 +227,7 @@ isLoading=false;
                                     Align(
                                       alignment: Alignment.topLeft,
                                       child: Text(
-                                        'DoroWot(ዶሮ ወጥ)',
+                                        'Shekila_Tibs(ሸክላ ጥብስ)',
                                         style: TextStyle(
                                           fontSize: 19,
                                           fontWeight: FontWeight.bold,
@@ -190,14 +241,14 @@ isLoading=false;
                                           fontSize: 15,
                                         ),),
                                         SizedBox(width: 22),
-                                        Text('164cal', style: TextStyle(
+                                        Text('186cal', style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.bold,
                                         ),),
                                         IconButton(
                                           onPressed: () {
                                             // Handle button press
-                                            print('Doro selected');
+                                            print('Shekila_tibs selected');
                                           },
                                           icon: Icon(
                                             Icons.add_box_outlined,
@@ -274,15 +325,432 @@ isLoading=false;
 
                               ),
                             ),
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  children: [
+
+                                    Image(
+                                      image: NetworkImage(ayb,scale: 1.0),
+                                      height: 135,
+                                      width: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        'Ayb(አይብ)',
+                                        style: TextStyle(
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Text('1once(28g)', style: TextStyle(
+                                          fontSize: 15,
+                                        ),),
+                                        SizedBox(width: 22),
+                                        Text('82cal', style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),),
+                                        IconButton(
+                                          onPressed: () {
+                                            // Handle button press
+                                            print('Ayb selected');
+                                          },
+                                          icon: Icon(
+                                            Icons.add_box_outlined,
+                                            size: 20,
+                                            color: Colors.blue,
+                                          ),
+                                        )
+
+
+                                      ],
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+                            ),
 
                           ],
                         ),
-                      )
+                      ),
+                      Row(
+                        children: [
+                          Align(
+                            alignment: Alignment(-.9,0),
+                            child: Text('Vegetables',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 170),
+                          ElevatedButton(onPressed: (){}, child: Text('More')),
+                        ],
+                      ),
+                      SizedBox(height: 30,),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: isLoading
+                            ? CircularProgressIndicator()
+                            : Row(
+                          children: [
+//፟________________________________________one image from fire base Gomen___________________________
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(5, 5, 5, 10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  children: [
+
+                                    Image(
+                                      image: NetworkImage(gomen,scale: 1.0),
+                                      height: 80,
+                                      width: 180,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        'Gomen(ጎመን)',
+                                        style: TextStyle(
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Text('1/2 cup', style: TextStyle(
+                                          fontSize: 15,
+                                        ),),
+                                        SizedBox(width: 22),
+                                        Text('216cal', style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),),
+                                        IconButton(
+                                          onPressed: () {
+                                            // Handle button press
+                                            print('Gomen selected');
+                                          },
+                                          icon: Icon(
+                                            Icons.add_box_outlined,
+                                            size: 20,
+                                            color: Colors.blue,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+
+                                ),
+
+                              ),
+                            ),
+
+
+
+
+//፟________________________________________one image from fire base kik___________________________
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(5, 5, 5, 10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  children: [
+
+                                    Image(
+                                      image: NetworkImage(kik,scale: 1.0),
+                                      height: 80,
+                                      width: 180,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        'kik(ክክ)',
+                                        style: TextStyle(
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Text('1 cup', style: TextStyle(
+                                          fontSize: 15,
+                                        ),),
+                                        SizedBox(width: 22),
+                                        Text('276cal', style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),),
+                                        IconButton(
+                                          onPressed: () {
+                                            // Handle button press
+                                            print('Kik selected');
+                                          },
+                                          icon: Icon(
+                                            Icons.add_box_outlined,
+                                            size: 20,
+                                            color: Colors.blue,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+                            ),
+//፟________________________________________one image from fire base kitfo___________________________
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  children: [
+
+                                    Image(
+                                      image: NetworkImage(tikilgomen,scale: 1.0),
+                                      height: 85,
+                                      width: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        'Tikil_Gomen(ጥቅል_ጎመን',
+                                        style: TextStyle(
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Text('1 cup', style: TextStyle(
+                                          fontSize: 15,
+                                        ),),
+                                        SizedBox(width: 22),
+                                        Text('161cal', style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),),
+                                        IconButton(
+                                          onPressed: () {
+                                            // Handle button press
+                                            print('Tikil_gomen selected');
+                                          },
+                                          icon: Icon(
+                                            Icons.add_box_outlined,
+                                            size: 20,
+                                            color: Colors.blue,
+                                          ),
+                                        )
+
+
+                                      ],
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      ),
+
+
+
+                      SizedBox(height: 30,),
+
+
+
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: isLoading
+                            ? CircularProgressIndicator()
+                            : Row(
+                          children: [
+//፟________________________________________one image from fire base Gomen___________________________
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(5, 5, 5, 10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  children: [
+
+                                    Image(
+                                      image: NetworkImage(anbasha,scale: 1.0),
+                                      height: 125,
+                                      width: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        'Anbasha(አንባሻ)',
+                                        style: TextStyle(
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Text('1once(28g)', style: TextStyle(
+                                          fontSize: 15,
+                                        ),),
+                                        SizedBox(width: 22),
+                                        Text('82cal', style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),),
+                                        IconButton(
+                                          onPressed: () {
+                                            // Handle button press
+                                            print('Anbasha selected');
+                                          },
+                                          icon: Icon(
+                                            Icons.add_box_outlined,
+                                            size: 20,
+                                            color: Colors.blue,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+
+                                ),
+
+                              ),
+                            ),
+
+
+
+
+//፟________________________________________one image from fire base Doro___________________________
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 0),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(5, 5, 5, 10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  children: [
+
+                                    Image(
+                                      image: NetworkImage(injera,scale: 1.0),
+                                      height: 125,
+                                      width: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        'Injera(እንጀራ)',
+                                        style: TextStyle(
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Text('1 cup', style: TextStyle(
+                                          fontSize: 15,
+                                        ),),
+                                        SizedBox(width: 22),
+                                        Text('216cal', style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                        ),),
+                                        IconButton(
+                                          onPressed: () {
+                                            // Handle button press
+                                            print('Injera selected');
+                                          },
+                                          icon: Icon(
+                                            Icons.add_box_outlined,
+                                            size: 20,
+                                            color: Colors.blue,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      ),
+
+
                     ],
 
-
-
                   ),
+
                 ),
 
 

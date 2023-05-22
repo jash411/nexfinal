@@ -12,7 +12,7 @@ class activityinfo extends StatefulWidget {
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 double Activity=0;
-
+double Energy=0;
 class _activityinfoState extends State<activityinfo> {
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,12 @@ body: SingleChildScrollView(
 
         ElevatedButton(onPressed: ()async {
           Activity= bmrvalue * 1.375 as double;
-          final data = {'EEoA': Activity};
+          Energy=bmrvalue+tefvalue+Activity;
+          final data = {
+            'EEoA': Activity,
+            'Energy': Energy
+
+          };
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
           print('Energy of Expenditure calculated by lightly active $Activity');
@@ -74,7 +79,8 @@ body: SingleChildScrollView(
 
         ElevatedButton(onPressed: ()async {
           Activity= bmrvalue * 1.55 as double;
-          final data = {'EEoA': Activity};
+          Energy=bmrvalue+tefvalue+Activity;
+          final data = {'EEoA': Activity, 'Energy': Energy};
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
           print('Energy of Expenditure calculated by Moderately active $Activity');
@@ -97,7 +103,8 @@ body: SingleChildScrollView(
 
         ElevatedButton(onPressed: ()async {
           Activity= bmrvalue * 1.725 as double;
-          final data = {'EEoA': Activity};
+          Energy=bmrvalue+tefvalue+Activity;
+          final data = {'EEoA': Activity,'Energy':Energy};
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
           print('Energy of Expenditure calculated by Very active $Activity');
@@ -120,7 +127,9 @@ body: SingleChildScrollView(
 
         ElevatedButton(onPressed: ()async {
           Activity= bmrvalue * 1.9 as double;
-          final data = {'EEoA': Activity};
+          Energy=bmrvalue+tefvalue+Activity;
+
+          final data = {'EEoA': Activity,'Energy':Energy};
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
           print('Energy of Expenditure calculated by Extra active $Activity');

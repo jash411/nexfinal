@@ -24,6 +24,7 @@ double cw = double.parse(currentweightController.text);
 double height=double.parse(heightController.text);
 int age=int.parse(ageController.text);
 double bmrvalue=0;
+double tefvalue=0;
 // late double Fembmrvalue;
 
 class _weightinfoState extends State<weightinfo> {
@@ -175,6 +176,7 @@ class _weightinfoState extends State<weightinfo> {
                           setState(() {
 
                              bmrvalue=(66.5 + (13.75 * cw) + (5.003 * height) - (6.75 * age)) as double;
+                             tefvalue=bmrvalue*0.1;
 
                             print(bmrvalue);
                             gender = value;
@@ -198,7 +200,7 @@ class _weightinfoState extends State<weightinfo> {
                           setState(() {
 
                             bmrvalue=(655.1 + (9.53 * cw) + (5.003 * height) - (4.676 * age)) as double;
-
+                            tefvalue=bmrvalue*0.1;
 
                             print(bmrvalue);
 
@@ -241,6 +243,7 @@ class _weightinfoState extends State<weightinfo> {
                         'gender': gender, // Add gender to Firestore
                         'goalweight':goalweightController.text,
                         'bmr': bmrvalue,
+                        'TEF': tefvalue,
 
                       }).then((value) => print('Basal metabolic rate added'));
 
@@ -255,13 +258,14 @@ class _weightinfoState extends State<weightinfo> {
                         color: Colors.black),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.blueGrey,
                     elevation: 0,
                     padding: EdgeInsets.all(16.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
+
                 ),
 
 

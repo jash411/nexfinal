@@ -60,12 +60,12 @@ SizedBox(height: 40.0),
                           color: Colors.black),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      elevation: 0,
-                      padding: EdgeInsets.all(16.0),
+                      backgroundColor: Colors.blueGrey,
+                      elevation: 5,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
+                      minimumSize: Size(160, 50),
                     ),
                   ),
 
