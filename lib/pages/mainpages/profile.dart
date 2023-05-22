@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nexfinal/pages/current_and_goalweight_info.dart';
+import 'package:nexfinal/pages/info_activity.dart';
 import 'package:nexfinal/pages/info_n_s_age.dart';
 import 'package:nexfinal/pages/mainpages/setting.dart';
 
@@ -215,6 +216,19 @@ class _profileState extends State<profile> {
 
                     ],
                   ),
+
+                  Row(
+                    children: [
+                      Text('EEoA: ', style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                      ),
+                      Text('$Activity cal', style: TextStyle(fontSize: 16, color: Colors.white)),
+
+                    ],
+                  ),
+
 
                 ],
               ),

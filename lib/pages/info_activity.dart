@@ -48,12 +48,11 @@ body: SingleChildScrollView(
 
 
         ElevatedButton(onPressed: ()async {
-          final data = {'activity': 'Lightly active'};
+          Activity= bmrvalue * 1.375 as double;
+          final data = {'EEoA': Activity};
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
-          print('${(bmrvalue * 1.375).toStringAsFixed(2)}lightly activity pressed');
-
-
+          print('Energy of Expenditure calculated by lightly active $Activity');
         },
           child: Text('Lightly Active',
             style: TextStyle(fontSize: 14,
@@ -72,10 +71,13 @@ body: SingleChildScrollView(
         SizedBox(height: 30.0),
 
 
-        ElevatedButton(onPressed: () async {
-          final data = {'activity': 'Moderately active'};
-        await collectionReference.add(data);
+
+        ElevatedButton(onPressed: ()async {
+          Activity= bmrvalue * 1.55 as double;
+          final data = {'EEoA': Activity};
+          await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
+          print('Energy of Expenditure calculated by Moderately active $Activity');
         },
           child: Text('Moderately Active',
             style: TextStyle(fontSize: 14,
@@ -93,12 +95,14 @@ body: SingleChildScrollView(
 
         SizedBox(height: 30.0),
 
-        ElevatedButton(onPressed: () async {
-          final data = {'activity': 'active'};
+        ElevatedButton(onPressed: ()async {
+          Activity= bmrvalue * 1.725 as double;
+          final data = {'EEoA': Activity};
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
+          print('Energy of Expenditure calculated by Very active $Activity');
         },
-          child: Text(' Active',
+          child: Text('Very Active',
             style: TextStyle(fontSize: 14,
                 color: Colors.black),
           ),
@@ -114,12 +118,14 @@ body: SingleChildScrollView(
 
         SizedBox(height: 30.0),
 
-        ElevatedButton(onPressed: () async {
-          final data = {'activity': 'Very active'};
+        ElevatedButton(onPressed: ()async {
+          Activity= bmrvalue * 1.9 as double;
+          final data = {'EEoA': Activity};
           await collectionReference.add(data);
           Navigator.pushNamed(context, '/dietinginfo.dart');
+          print('Energy of Expenditure calculated by Extra active $Activity');
         },
-          child: Text('Very Active',
+          child: Text('Extra Active',
             style: TextStyle(fontSize: 14,
                 color: Colors.black),
           ),
